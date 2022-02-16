@@ -414,10 +414,36 @@
     // $str = 'Ajibola is in Baltimoore right now.';
     // echo preg_match_all($pattern, $str);
 
-    $pattern = '/otandtconsulting/i';
-    $str = 'works at otandtconsulting ltd';
-    echo preg_replace($pattern, 'tm30 Global', $str);
+    // $pattern = '/otandtconsulting/i';
+    // $str = 'works at otandtconsulting ltd';
+    // echo preg_replace($pattern, 'tm30 Global', $str);
     // echo $str2;
+
+    // ?file handling
+    // $file = readfile('./demo.txt');
+    // echo $file;
+    // $file = fopen('./demo.txt', 'r') or die("Unable to find the specified file!");
+    // echo fread($file, filesize('./demo.txt'));
+    // echo fgets($file);
+    // while (!(feof($file))) {
+    //     # code...
+    //     echo fgets($file). '<br/>';
+    // }
+    // while (!(feof($file))){
+    //     echo fgetc($file) . '<br/>';
+    // }
+    // fclose($file);
+    $file = fopen('./demo2.txt', 'w');
+    $txt = 'The name of my dream car is suzuki!\n';
+    fwrite($file, $txt);
+    $txt = 'The name of my dream ride is bicycle!\n';
+    fwrite($file, $txt);
+    while (!(feof($file))) {
+        # code...
+        echo fread($file, filesize('./demo2.txt')) . '<br/>';
+    }
+    fclose($file);
+
 
 
 ?>
