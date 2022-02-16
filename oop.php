@@ -94,55 +94,113 @@
     // echo $name;
 
     // Inheritance
-    class Fruit {
-        public $name, $color;
+    // class Fruit {
+    //     public $name, $color;
 
-        public function __construct($name, $color)
-        {
-            $this->name = $name;
-            $this->color = $color;
-        }
+    //     public function __construct($name, $color)
+    //     {
+    //         $this->name = $name;
+    //         $this->color = $color;
+    //     }
 
-        public function intro()
-        {
-            echo "I am {$this->name} with the color of {$this->color}";
-        }
+    //     public function intro()
+    //     {
+    //         echo "I am {$this->name} with the color of {$this->color}";
+    //     }
 
-        protected function protect()
-        {
-            echo "Oh sorrry subclass, this can only be access in a class but not outside a class";
-        }
-    }
+    //     protected function protect()
+    //     {
+    //         echo "Oh sorrry subclass, this can only be access in a class but not outside a class";
+    //     }
+    // }
 
-    class Banana extends Fruit {
-        const TYPE = "I'm just a fruit";
-        public $weight;
+    // class Banana extends Fruit {
+    //     const TYPE = "I'm just a fruit";
+    //     public $weight;
 
-        public function __construct($name, $color, $weight)
-        {
-            $this->name = $name;
-            $this->color = $color;
-            $this->weight = $weight;
-        }
+    //     public function __construct($name, $color, $weight)
+    //     {
+    //         $this->name = $name;
+    //         $this->color = $color;
+    //         $this->weight = $weight;
+    //     }
 
-        public function intro()
-        {
-            echo "I am a {$this->name} with a color of {$this->color} and a weight of {$this->weight}";
-        }
+    //     public function intro()
+    //     {
+    //         echo "I am a {$this->name} with a color of {$this->color} and a weight of {$this->weight}";
+    //     }
 
-        public function message()
-        {
-            echo "I'm inside the banana class!" . $this->protect();
-            echo SELF::TYPE;
-        }
-    }
+    //     public function message()
+    //     {
+    //         echo "I'm inside the banana class!" . $this->protect();
+    //         echo SELF::TYPE;
+    //     }
+    // }
 
-    $banana = new Banana("Banana", "Green", 22);
-    $banana->intro();
-    $banana->message();
-    // $banana->protect();
-    $osan = new Fruit("Orange", "Yellow");
-    $osan->intro();
+    // $banana = new Banana("Banana", "Green", 22);
+    // $banana->intro();
+    // $banana->message();
+    // // $banana->protect();
+    // $osan = new Fruit("Orange", "Yellow");
+    // $osan->intro();
     // $osan->message();
     // echo Banana::TYPE;
+
+    // Abstract class
+    abstract class Car {
+        public $name;
+
+        public function __construct($name)
+        {
+            $this->name = $name;
+        }
+
+        abstract public function intro() : string;
+    }
+
+    class Geely extends Car {
+        public function intro(): string
+        {
+            return "I am proud to be an American because I'm a " . $this->name;
+        }
+    }
+
+    class Benz extends Car {
+        public function intro(): string
+        {
+            return "I am proud to be a Uknian because I'm a " . $this->name;
+        }
+    }
+
+    // $geely = new Geely("Geely");
+    // echo $geely->intro() . '<br/>';
+
+    // $benz = new Benz("Benz");
+    // echo $benz->intro() . '<br/>';
+
+    abstract class ParentClass {
+        abstract protected function prefixName($name) : string;
+    }
+
+    class ChildClass extends ParentClass {
+        public function prefixName($name) : string
+        {
+            if ($name == 'Adebayo Rilwan') {
+                # code...
+                $prefix = 'Mr.';
+            } else if($name == 'Adebayo Olabisi') {
+                # code...
+                $prefix = 'Mrs.';
+            } else {
+                # code...
+                $prefix = '';
+            }
+
+            return "{$prefix} {$name}";
+            
+        }
+    }
+
+    $name = new ChildClass();
+    echo $name->prefixName("Adebayo Olabisi");
 ?>
