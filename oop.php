@@ -276,9 +276,74 @@
         use first_message, second_message;
     }
 
-    $greeting = new Greet;
-    // $greeting->msg_1();
+    // $greeting = new Greet;
+    // // $greeting->msg_1();
 
-    $greeting2 = new Greet2;
-    $greeting2->msg_1() . $greeting2->msg_2();
+    // $greeting2 = new Greet2;
+    // $greeting2->msg_1() . $greeting2->msg_2();
+
+    class Testing {
+        public static function greet()
+        {
+            echo "Hello Mr. Ajibola";
+        }
+
+        public function __construct()
+        {
+            self::greet();
+        }
+    }
+
+    class Testing2 {
+        public function welcome()
+        {
+            Testing::greet();
+        }
+    }
+
+    // Testing::greet();
+    // $test = new Testing2;
+    // echo $test->welcome();
+
+    class Domain {
+        protected function get_website_name()
+        {
+            return "ajibolarilwan14.github.io";
+        }
+    }
+
+    class Ajibola extends domain {
+        public $website_name;
+
+        public function __construct()
+        {
+            $this->website_name = parent::get_website_name();
+        }
+    }
+
+    // $ajibola = new Ajibola;
+    // echo $ajibola->website_name;
+
+    class Pi {
+        public static $pi = 3.142;
+
+        public function staticValue()
+        {
+            return self::$pi;
+        }
+    }
+
+    class x extends Pi {
+        public function y()
+        {
+            return parent::$pi;
+        }
+    }
+
+    // echo Pi::$pi;
+    // $pi = new Pi;
+    // echo $pi->staticValue();
+    $pi = new x;
+    // echo x::$pi;
+    echo $pi->y();
 ?>
