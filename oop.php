@@ -345,5 +345,70 @@
     // echo $pi->staticValue();
     $pi = new x;
     // echo x::$pi;
-    echo $pi->y();
+    // echo $pi->y();
+
+    // iterables
+    function printIterables(iterable $my_iterable)
+    {
+        foreach ($my_iterable as $item) {
+            # code...
+            echo $item . '<br/>';
+        }
+    }
+
+    // $arr = [1, 2, 'a', 3, '9'];
+    // printIterables($arr);
+
+    function get_iterable() : iterable
+    {
+        # code...
+        return [2, 3, 5, 5, 9, 7];
+    }
+
+    // $myIterable = get_iterable();
+    // foreach($myIterable as $item)
+    // {
+    //     echo $item . '<br/>';
+    // }
+
+    class my_iterables implements Iterator {
+        public $items = [];
+        public $pointer = 0;
+
+        public function __construct($items)
+        {
+            $this->items = array_values($items);
+        }
+
+        public function next(): void
+        {
+            $this->pointer++;
+        }
+
+        public function current(): mixed
+        {
+            return $this->items[$this->pointer];
+        }
+
+        public function rewind(): void
+        {
+            $this->pointer = 0;
+        }
+
+        public function valid(): bool
+        {
+            return $this->pointer < count($this->items);
+        }
+
+        public function key(): mixed
+        {
+            return $this->pointer;
+        }
+    }
+
+    $iterator = new my_iterables([3, 4, 5, 8, 9, 0 ,3, 0, 9, 4, 5]);
+    // printIterables($iterator);
+    echo $iterator->valid();
+
+
 ?>
