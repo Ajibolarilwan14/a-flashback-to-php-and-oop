@@ -97,7 +97,7 @@
     class Fruit {
         public $name, $color;
 
-        final public function __construct($name, $color)
+        public function __construct($name, $color)
         {
             $this->name = $name;
             $this->color = $color;
@@ -115,6 +115,7 @@
     }
 
     class Banana extends Fruit {
+        const TYPE = "I'm just a fruit";
         public $weight;
 
         public function __construct($name, $color, $weight)
@@ -132,14 +133,16 @@
         public function message()
         {
             echo "I'm inside the banana class!" . $this->protect();
+            echo SELF::TYPE;
         }
     }
 
     $banana = new Banana("Banana", "Green", 22);
     $banana->intro();
-    // $banana->message();
+    $banana->message();
     // $banana->protect();
     $osan = new Fruit("Orange", "Yellow");
     $osan->intro();
     // $osan->message();
+    // echo Banana::TYPE;
 ?>
