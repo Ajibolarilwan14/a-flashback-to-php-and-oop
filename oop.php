@@ -406,9 +406,18 @@
         }
     }
 
-    $iterator = new my_iterables([3, 4, 5, 8, 9, 0 ,3, 0, 9, 4, 5]);
+    // $iterator = new my_iterables([3, 4, 5, 8, 9, 0 ,3, 0, 9, 4, 5]);
     // printIterables($iterator);
-    echo $iterator->valid();
+    // echo $iterator->valid();
+
+    // $pattern = '/la/i';
+    // $str = 'Ajibola is in Baltimoore right now.';
+    // echo preg_match_all($pattern, $str);
+
+    $pattern = '/otandtconsulting/i';
+    $str = 'works at otandtconsulting ltd';
+    echo preg_replace($pattern, 'tm30 Global', $str);
+    // echo $str2;
 
 
 ?>
