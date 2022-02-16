@@ -178,29 +178,65 @@
     // $benz = new Benz("Benz");
     // echo $benz->intro() . '<br/>';
 
-    abstract class ParentClass {
-        abstract protected function prefixName($name) : string;
+    // abstract class ParentClass {
+    //     abstract protected function prefixName($name) : string;
+    // }
+
+    // class ChildClass extends ParentClass {
+    //     public function prefixName($name) : string
+    //     {
+    //         if ($name == 'Adebayo Rilwan') {
+    //             # code...
+    //             $prefix = 'Mr.';
+    //         } else if($name == 'Adebayo Olabisi') {
+    //             # code...
+    //             $prefix = 'Mrs.';
+    //         } else {
+    //             # code...
+    //             $prefix = '';
+    //         }
+
+    //         return "{$prefix} {$name}";
+            
+    //     }
+    // }
+
+    // $name = new ChildClass();
+    // echo $name->prefixName("Adebayo Olabisi");
+
+    interface Animal {
+        public function make_sound();
     }
 
-    class ChildClass extends ParentClass {
-        public function prefixName($name) : string
+    class Cat implements Animal {
+        public function make_sound()
         {
-            if ($name == 'Adebayo Rilwan') {
-                # code...
-                $prefix = 'Mr.';
-            } else if($name == 'Adebayo Olabisi') {
-                # code...
-                $prefix = 'Mrs.';
-            } else {
-                # code...
-                $prefix = '';
-            }
-
-            return "{$prefix} {$name}";
-            
+            echo "Meow!";
         }
     }
 
-    $name = new ChildClass();
-    echo $name->prefixName("Adebayo Olabisi");
+    class Dog implements Animal {
+        public function make_sound()
+        {
+            echo "Bark!";
+        }
+    }
+
+    class Rat implements Animal {
+        public function make_sound()
+        {
+            echo "Squeak!";
+        }
+    }
+
+    $cat = new Cat();
+    $dog = new Dog;
+    $rat = new Rat();
+
+    $animals = array($cat, $dog, $rat);
+
+    foreach ($animals as $animal) {
+        # code...
+        echo $animal->make_sound() . '<br/>';
+    }
 ?>
