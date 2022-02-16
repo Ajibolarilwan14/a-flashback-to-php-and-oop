@@ -235,8 +235,50 @@
 
     $animals = array($cat, $dog, $rat);
 
-    foreach ($animals as $animal) {
-        # code...
-        echo $animal->make_sound() . '<br/>';
+    // foreach ($animals as $animal) {
+    //     # code...
+    //     echo $animal->make_sound() . '<br/>';
+    // }
+
+    trait message_1 {
+        public function msg()
+        {
+            echo "My name is Adebayo Rilwan Ajibola";
+        }
     }
+
+    class Welcome {
+        use message_1;
+    }
+
+    // $intro = new Welcome;
+    // echo $intro->msg();
+
+    trait first_message {
+        public function msg_1()
+        {
+            echo "My name is Adebayo Rilwan Ajibola";
+        }
+    }
+
+    trait second_message {
+        public function msg_2()
+        {
+            echo "I'm a Software Engineer from West Africa";
+        }
+    }
+
+    class Greet {
+        use first_message;
+    }
+
+    class Greet2 {
+        use first_message, second_message;
+    }
+
+    $greeting = new Greet;
+    // $greeting->msg_1();
+
+    $greeting2 = new Greet2;
+    $greeting2->msg_1() . $greeting2->msg_2();
 ?>
