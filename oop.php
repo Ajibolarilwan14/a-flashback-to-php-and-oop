@@ -57,7 +57,39 @@
         }
     }
 
-    $car = new Car("Geely", 2022);
+    // $car = new Car("Geely", 2022);
 
     // echo $car->get_name() . $car->get_year();
+
+    // access modifiers
+    class Person {
+        // public $name;
+        // protected $age;
+        // private $color; 
+        public $name;
+        public $age;
+        public $color;
+
+        public function set_name($name)
+        {
+            $this->name = $name;
+        }
+
+        protected function set_age($age)
+        {
+            $this->age = $age;
+        }
+
+        private function set_color($color)
+        {
+            $this->color = $color;
+        }
+    }
+
+    $person = new Person();
+    $name = $person->set_name("Ridwan");
+    $age = $person->set_age(26);
+    $color = $person->set_color("Black");
+
+    echo $name;
 ?>
